@@ -1,6 +1,6 @@
-package com.hex.user_service.security;
+package com.hex.ticket_service.security;
 
-import com.hex.user_service.security.JwtAuthFilter;
+import com.hex.ticket_service.security.JwtAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,9 +29,7 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                       // .requestMatchers("/api/users/**").authenticated()
-
+                        //.requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
 
                         .anyRequest().authenticated())
@@ -41,15 +39,15 @@ public class SecurityConfig {
     }
 
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration cfg) throws Exception {
-        return cfg.getAuthenticationManager();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+//
+//    @Bean
+//    public AuthenticationManager authenticationManager(AuthenticationConfiguration cfg) throws Exception {
+//        return cfg.getAuthenticationManager();
+//    }
 
 
 }

@@ -13,6 +13,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -51,7 +54,12 @@ public class AuthService {
         );
 
         var user = userRepository.findByUsername(req.username()).orElseThrow();
-        String token = jwt.generateToken(user.getUsername(), Map.of("role", "ROLE_" + user.getRole()));
+        Map<String,Object> cliams=new HashMap<>();
+        cliams.put("roles", Arrays.asList("ROLE_"+user.getRole().name()));
+
+        //String token = jwt.generateToken(user.getUsername(), Map.of("role", "ROLE_" + user.getRole()));
+        String token = jwt.generateToken(user.getUsername(), cliams);
+        log.info("Token value: {}",token);
         return new AuthDtos.AuthResponse(token, user.getUsername(), user.getRole().name());
 
     }

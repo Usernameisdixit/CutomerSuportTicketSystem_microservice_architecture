@@ -10,12 +10,16 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
         </processorPath>
+        <module name="history-service" />
         <module name="user-service" />
+        <module name="ticket-service" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="history-service" options="-parameters" />
+      <module name="ticket-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
   </component>
