@@ -2,6 +2,7 @@ package com.hex.ticket_service.dto;
 
 import com.hex.ticket_service.entity.Priority;
 import com.hex.ticket_service.entity.TicketStatus;
+import com.hex.ticket_service.service.dto.UserDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -26,8 +27,8 @@ public class TicketDtos {
 
 
     public record TicketResponse(Long id, String title, String description, String status, String priority,
-                                 String createdBy,
-                                 String assignedTo) {
+                                 Long createdBy,
+                                 Long assignedTo) {
     }
 
 }

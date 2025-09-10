@@ -6,11 +6,14 @@ import com.hex.user_service.repository.UserRepository;
 import com.hex.user_service.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/auth")
 @AllArgsConstructor
@@ -44,5 +47,9 @@ public class AuthController {
         return ResponseEntity.ok(new AuthDtos.MeResponse(
                 user.getId(), user.getUsername(), user.getEmail(), user.getRole().name()));
     }
+
+
+
+
 
 }

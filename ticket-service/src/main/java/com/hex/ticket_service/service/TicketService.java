@@ -49,6 +49,7 @@ public class TicketService {
                 .updatedAt(LocalDateTime.now())
                 .build();
         Ticket saved = ticketRepository.save(ticket);
+        log.info("Saved value of Ticket: {}",saved);
         return mapToResponse(saved);
 
     }
@@ -107,13 +108,16 @@ public class TicketService {
 
 
     private TicketDtos.TicketResponse mapToResponse(Ticket ticket) {
-        UserDto creator=userClient.getUserById(ticket.getCreatedBy());
-        UserDto assignee=userClient.getUserById(ticket.getAssignedTo());
+        //UserDto creator=userClient.getUserById(ticket.getCreatedBy());
+        //UserDto assignee=userClient.getUserById(ticket.getAssignedTo());
+        //log.info("Creator: {}",creator);
+        //log.info("Assignee: {}",assignee);
+
         return new TicketDtos.TicketResponse(ticket.getId(), ticket.getTitle(), ticket.getDescription(), ticket.getStatus().name(), ticket.getPriority().name(),
 //                ticket.getCreatedBy() != null ? ticket.getCreatedBy().getUsername() : null,
 //                ticket.getAssignedTo() != null ? ticket.getAssignedTo().getUsername() : null);
-    creator!=null?creator.username():null,
-        assignee!=null?assignee.username():null);
+    ticket.getCreatedBy(),
+                ticket.getAssignedTo());
 
     }
 

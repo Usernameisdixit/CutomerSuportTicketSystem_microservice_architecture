@@ -8,10 +8,12 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -55,7 +57,7 @@ public class AuthService {
 
         var user = userRepository.findByUsername(req.username()).orElseThrow();
         Map<String,Object> cliams=new HashMap<>();
-        cliams.put("roles", Arrays.asList("ROLE_"+user.getRole().name()));
+        cliams.put("roles", List.of("ROLE_"+user.getRole().name()));
 
         //String token = jwt.generateToken(user.getUsername(), Map.of("role", "ROLE_" + user.getRole()));
         String token = jwt.generateToken(user.getUsername(), cliams);
@@ -63,5 +65,8 @@ public class AuthService {
         return new AuthDtos.AuthResponse(token, user.getUsername(), user.getRole().name());
 
     }
+
+
+
 
 }

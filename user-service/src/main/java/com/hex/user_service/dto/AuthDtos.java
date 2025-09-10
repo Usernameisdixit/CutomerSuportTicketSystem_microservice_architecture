@@ -23,6 +23,7 @@ public class AuthDtos {
 
     public record MeResponse(Long id,String username,String email,String role){}
 
-
+    public record UserDto(Long id,String username,String email,String role) {
+    }
 
 }
