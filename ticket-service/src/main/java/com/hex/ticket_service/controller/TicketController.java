@@ -1,8 +1,8 @@
 package com.hex.ticket_service.controller;
 
 import com.hex.ticket_service.dto.TicketDtos;
-//import com.hex.ticket_service.dto.TicketHistoryDto;
-//import com.hex.ticket_service.service.TicketHistoryService;
+import com.hex.ticket_service.dto.TicketHistoryDto;
+import com.hex.ticket_service.service.TicketHistoryService;
 import com.hex.ticket_service.service.TicketService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ public class TicketController {
 
     private final TicketService ticketService;
 
-    //private final TicketHistoryService ticketHistoryService;
+    private final TicketHistoryService ticketHistoryService;
 
 
     @PostMapping
@@ -43,18 +43,18 @@ public class TicketController {
     }
 
 
-//    @PutMapping("/{id}")
-//    @PreAuthorize("hasAnyRole('AGENT','ADMIN')")
-//    public ResponseEntity<TicketDtos.TicketResponse> updateTicket(@PathVariable Long id, @RequestBody TicketDtos.UpdateTicketRequest req) {
-//        return ResponseEntity.ok(ticketService.updateTicket(id, req));
-//    }
-//
-//
-//    @GetMapping("/{id}/history")
-//    @PreAuthorize("hasAnyRole('CUSTOMER','AGENT','ADMIN')")
-//    public List<TicketHistoryDto> getTicketHistory(@PathVariable Long id) {
-//        return ticketHistoryService.getHistory(id);
-//    }
+    @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('AGENT','ADMIN')")
+    public ResponseEntity<TicketDtos.TicketResponse> updateTicket(@PathVariable Long id, @RequestBody TicketDtos.UpdateTicketRequest req) {
+        return ResponseEntity.ok(ticketService.updateTicket(id, req));
+    }
+
+
+    @GetMapping("/{id}/history")
+    @PreAuthorize("hasAnyRole('CUSTOMER','AGENT','ADMIN')")
+    public List<TicketHistoryDto> getTicketHistory(@PathVariable Long id) {
+        return ticketHistoryService.getHistory(id);
+    }
 
 
 }

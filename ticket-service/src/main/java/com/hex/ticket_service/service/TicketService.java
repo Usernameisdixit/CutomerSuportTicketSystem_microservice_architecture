@@ -9,6 +9,7 @@ import com.hex.ticket_service.repository.TicketRepository;
 //import com.hex.ticket_service.repository.UserRepository;
 import com.hex.ticket_service.service.client.UserClient;
 import com.hex.ticket_service.service.dto.UserDto;
+import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -29,8 +31,8 @@ public class TicketService {
     private final TicketRepository ticketRepository;
     private final UserClient userClient;
     //private final UserRepository userRepository;
-    //private final TicketHistoryService ticketHistoryService;
-                                                                                                                                                                                                                                                        
+    private final TicketHistoryService ticketHistoryService;
+
 
     public TicketDtos.TicketResponse createTicket(TicketDtos.CreateTicketRequest request) {
         log.info("Creating Ticket with title:{}", request.title());
@@ -65,46 +67,59 @@ public class TicketService {
 
     }
 
-//    public TicketDtos.TicketResponse updateTicket(Long id, TicketDtos.UpdateTicketRequest req) {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        String currentUser = auth.getName();
-//        boolean isAdmin = auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
-//
-//        Ticket ticket = ticketRepository.findById(id).orElseThrow();
-//
-//        if (!isAdmin && auth.getAuthorities().stream().noneMatch(a -> a.getAuthority().equals("ROLE_AGENT"))) {
-//            throw new RuntimeException("You are not allowed to update tickets.");
-//        }
-//
-////in the req we are assigning the assignedTo value so we have kept !=null
-//        if (req.assignedTo() != null) {
-//            String oldAssignee = ticket.getAssignedTo() != null ? ticket.getAssignedTo().getUsername() : null;
-//            if (isAdmin) {
-//                User assignee = userRepository.findByUsername(req.assignedTo()).orElseThrow(() -> new RuntimeException("User not found"));
-//                ticket.setAssignedTo(assignee);
-//            } else {
-//
-//
-//                if (!req.assignedTo().equals(currentUser)) {
-//                    throw new RuntimeException(("Agents can only assign tickets to themselves."));
-//                }
-//                User assignee = userRepository.findByUsername(currentUser).orElseThrow();
-//                ticket.setAssignedTo(assignee);
-//            }
-//
-//            String newAssignee = ticket.getAssignedTo() != null ? ticket.getAssignedTo().getUsername() : null;
-//            ticketHistoryService.logHistory(ticket, "ASSIGNED_CHANGE", oldAssignee, newAssignee, req.comment(), currentUser);
-//        }
-//        if (req.status() != null && !req.status().equals(ticket.getStatus())) {
-//            String oldStatus = ticket.getStatus() != null ? ticket.getStatus().name() : null;
-//            ticket.setStatus(req.status());
-//            String newStaus = ticket.getStatus() != null ? ticket.getStatus().name() : null;
-//
-//            ticketHistoryService.logHistory(ticket, "STATUS_CHANGED", oldStatus, newStaus, req.comment(), currentUser);
-//
-//        }
-//        return mapToResponse(ticketRepository.save(ticket));
-//    }
+    public TicketDtos.TicketResponse updateTicket(Long id, TicketDtos.UpdateTicketRequest req) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUser = auth.getName();
+        UserDto assignee = userClient.getUserByUsername(currentUser);
+
+        boolean isAdmin = auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+
+        Ticket ticket = ticketRepository.findById(id).orElseThrow();
+
+        if (!isAdmin && auth.getAuthorities().stream().noneMatch(a -> a.getAuthority().equals("ROLE_AGENT"))) {
+            throw new RuntimeException("You are not allowed to update tickets.");
+        }
+
+//in the req we are assigning the assignedTo value so we have kept !=null
+        if (req.assignedTo() != null) {
+            String oldAssigneeId = ticket.getAssignedTo() != null ? ticket.getAssignedTo().toString() : null;
+            if (isAdmin) {
+                //User assignee = userRepository.findByUsername(req.assignedTo()).orElseThrow(() -> new RuntimeException("User not found"));
+                UserDto assigneee = userClient.getUserById(req.assignedTo());
+                log.info("Value of assigneee: {}",assigneee);
+
+                if(assigneee.role().equals("ADMIN") || assigneee.role().equals("AGENT")){
+                    Long assigneeId = assigneee.id();
+                    ticket.setAssignedTo(assigneeId);
+                }else{
+                    throw new RuntimeException("Admin can not assign tickets to customers");
+                }
+            } else {
+
+                UserDto assigneee = userClient.getUserById(req.assignedTo());
+                Long assigneeId = assigneee.id();
+                if (!Objects.equals(assigneeId, assignee.id())) {
+                    throw new RuntimeException(("Agents can only assign tickets to themselves."));
+                }
+                //User assignee = userRepository.findByUsername(currentUser).orElseThrow();
+                ticket.setAssignedTo(assigneeId);
+            }
+
+            //String newAssignee = ticket.getAssignedTo() != null ? ticket.getAssignedTo().getUsername() : null;
+            String newAssigneeId = ticket.getAssignedTo() != null ? ticket.getAssignedTo().toString() : null;
+
+            ticketHistoryService.logHistory(ticket, "ASSIGNED_CHANGE", oldAssigneeId, newAssigneeId, req.comment(), currentUser);
+        }
+        if (req.status() != null && !req.status().equals(ticket.getStatus())) {
+            String oldStatus = ticket.getStatus() != null ? ticket.getStatus().name() : null;
+            ticket.setStatus(req.status());
+            String newStaus = ticket.getStatus() != null ? ticket.getStatus().name() : null;
+
+            ticketHistoryService.logHistory(ticket, "STATUS_CHANGED", oldStatus, newStaus, req.comment(), currentUser);
+
+        }
+        return mapToResponse(ticketRepository.save(ticket));
+    }
 
 
     private TicketDtos.TicketResponse mapToResponse(Ticket ticket) {

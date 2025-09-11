@@ -22,7 +22,7 @@ public class TicketDtos {
                                       TicketStatus status,
                                       String priority,
                                       String comment,
-                                      String assignedTo) {
+                                      Long assignedTo) {
     }
 
 
