@@ -5,6 +5,8 @@ import com.hex.ticket_service.entity.Ticket;
 import com.hex.ticket_service.entity.TicketStatus;
 //import com.hex.ticket_service.entity.User;
 //import com.hex.ticket_service.repository.TicketHistoryRepository;
+import com.hex.ticket_service.exception.InvalidAssignmentException;
+import com.hex.ticket_service.exception.UnauthorizedActionException;
 import com.hex.ticket_service.repository.TicketRepository;
 //import com.hex.ticket_service.repository.UserRepository;
 import com.hex.ticket_service.service.client.UserClient;
@@ -92,14 +94,14 @@ public class TicketService {
                     Long assigneeId = assigneee.id();
                     ticket.setAssignedTo(assigneeId);
                 }else{
-                    throw new RuntimeException("Admin can not assign tickets to customers");
+                    throw new InvalidAssignmentException("Admin can not assign tickets to customers");
                 }
             } else {
 
                 UserDto assigneee = userClient.getUserById(req.assignedTo());
                 Long assigneeId = assigneee.id();
                 if (!Objects.equals(assigneeId, assignee.id())) {
-                    throw new RuntimeException(("Agents can only assign tickets to themselves."));
+                    throw new UnauthorizedActionException("Agents can only assign tickets to themselves.");
                 }
                 //User assignee = userRepository.findByUsername(currentUser).orElseThrow();
                 ticket.setAssignedTo(assigneeId);

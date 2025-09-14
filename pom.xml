@@ -12,7 +12,7 @@
 		<module>user-service</module>
 	<module>ticket-service</module>
 
-	<module>history-service</module>
+<!--	<module>history-service</module>-->
 
 	</modules>
 
