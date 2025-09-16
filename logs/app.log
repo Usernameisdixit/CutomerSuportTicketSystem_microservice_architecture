@@ -3933,3 +3933,147 @@ java.lang.RuntimeException: User Not Found
 2025-09-16T18:30:54.636+05:30  INFO 21340 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 2025-09-16T18:30:54.652+05:30  INFO 10324 --- [ticket-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-09-16T18:30:54.668+05:30  INFO 10324 --- [ticket-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-16T23:02:46.473+05:30  INFO 20844 --- [user-service] [restartedMain] c.h.user_service.UserServiceApplication  : Starting UserServiceApplication using Java 17.0.10 with PID 20844 (C:\Users\2000153919\Downloads\customersupportapp_microservice\user-service\target\classes started by 2000153919 in C:\Users\2000153919\Downloads\customersupportapp_microservice)
+2025-09-16T23:02:46.473+05:30  INFO 20844 --- [user-service] [restartedMain] c.h.user_service.UserServiceApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-09-16T23:02:46.608+05:30  INFO 20844 --- [user-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-09-16T23:02:46.608+05:30  INFO 20844 --- [user-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-09-16T23:02:47.065+05:30  INFO 20220 --- [ticket-service] [restartedMain] c.h.t.TicketServiceApplication           : Starting TicketServiceApplication using Java 17.0.10 with PID 20220 (C:\Users\2000153919\Downloads\customersupportapp_microservice\ticket-service\target\classes started by 2000153919 in C:\Users\2000153919\Downloads\customersupportapp_microservice)
+2025-09-16T23:02:47.065+05:30  INFO 20220 --- [ticket-service] [restartedMain] c.h.t.TicketServiceApplication           : No active profile set, falling back to 1 default profile: "default"
+2025-09-16T23:02:47.130+05:30  INFO 20220 --- [ticket-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-09-16T23:02:47.130+05:30  INFO 20220 --- [ticket-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-09-16T23:02:49.275+05:30  INFO 20844 --- [user-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-16T23:02:49.275+05:30  INFO 20220 --- [ticket-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-16T23:02:49.431+05:30  INFO 20844 --- [user-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 141 ms. Found 1 JPA repository interface.
+2025-09-16T23:02:49.431+05:30  INFO 20220 --- [ticket-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 142 ms. Found 2 JPA repository interfaces.
+2025-09-16T23:02:49.869+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=03bddc21-84cc-3aaa-b95d-761f16bb0b26
+2025-09-16T23:02:51.201+05:30  INFO 20844 --- [user-service] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-09-16T23:02:51.264+05:30  INFO 20844 --- [user-service] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-16T23:02:51.264+05:30  INFO 20844 --- [user-service] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-09-16T23:02:51.279+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+2025-09-16T23:02:51.295+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-16T23:02:51.295+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-09-16T23:02:51.451+05:30  INFO 20844 --- [user-service] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-16T23:02:51.451+05:30  INFO 20844 --- [user-service] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4843 ms
+2025-09-16T23:02:51.482+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-16T23:02:51.482+05:30  INFO 20220 --- [ticket-service] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4341 ms
+2025-09-16T23:02:51.963+05:30  INFO 20844 --- [user-service] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-16T23:02:51.963+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-16T23:02:52.417+05:30  INFO 20220 --- [ticket-service] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2025-09-16T23:02:52.417+05:30  INFO 20844 --- [user-service] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2025-09-16T23:02:52.574+05:30  INFO 20844 --- [user-service] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-16T23:02:52.574+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-16T23:02:53.662+05:30  INFO 20844 --- [user-service] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-16T23:02:53.662+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-16T23:02:53.849+05:30  INFO 20844 --- [user-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-16T23:02:53.865+05:30  INFO 20220 --- [ticket-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-16T23:02:54.241+05:30  INFO 20220 --- [ticket-service] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2dacbc95
+2025-09-16T23:02:54.241+05:30  INFO 20844 --- [user-service] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4f151bdb
+2025-09-16T23:02:54.241+05:30  INFO 20220 --- [ticket-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-16T23:02:54.241+05:30  INFO 20844 --- [user-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-16T23:02:54.366+05:30  WARN 20220 --- [ticket-service] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-16T23:02:54.366+05:30  WARN 20844 --- [user-service] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-16T23:02:54.428+05:30  INFO 20220 --- [ticket-service] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-16T23:02:54.428+05:30  INFO 20844 --- [user-service] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-16T23:02:56.484+05:30  INFO 20844 --- [user-service] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-16T23:02:56.499+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-16T23:02:56.579+05:30  INFO 20844 --- [user-service] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-16T23:02:56.688+05:30  INFO 20220 --- [ticket-service] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-16T23:02:57.376+05:30  WARN 20220 --- [ticket-service] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-16T23:02:57.423+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-09-16T23:02:57.563+05:30  INFO 20844 --- [user-service] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2025-09-16T23:02:57.845+05:30  WARN 20844 --- [user-service] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-16T23:02:57.860+05:30  WARN 20220 --- [ticket-service] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 517d4322-586a-4adf-9189-b3b64c9f0773
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-09-16T23:02:57.876+05:30  INFO 20220 --- [ticket-service] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-09-16T23:02:59.386+05:30  WARN 20844 --- [user-service] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-09-16T23:02:59.480+05:30  INFO 20844 --- [user-service] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-09-16T23:02:59.495+05:30  INFO 20844 --- [user-service] [restartedMain] c.h.user_service.UserServiceApplication  : Started UserServiceApplication in 14.575 seconds (process running for 16.282)
+2025-09-16T23:02:59.526+05:30  INFO 20220 --- [ticket-service] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
+2025-09-16T23:02:59.573+05:30  INFO 20220 --- [ticket-service] [restartedMain] c.h.t.TicketServiceApplication           : Started TicketServiceApplication in 13.186 seconds (process running for 14.514)
+2025-09-16T23:03:11.168+05:30  INFO 20844 --- [user-service] [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-16T23:03:11.168+05:30  INFO 20844 --- [user-service] [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-16T23:03:11.169+05:30  INFO 20844 --- [user-service] [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-16T23:03:11.942+05:30  INFO 20844 --- [user-service] [http-nio-8081-exec-6] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 372 ms
+2025-09-16T23:03:15.331+05:30  INFO 20220 --- [ticket-service] [http-nio-8082-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-16T23:03:15.331+05:30  INFO 20220 --- [ticket-service] [http-nio-8082-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-16T23:03:15.333+05:30  INFO 20220 --- [ticket-service] [http-nio-8082-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-16T23:03:16.034+05:30  INFO 20220 --- [ticket-service] [http-nio-8082-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 400 ms
+2025-09-16T23:04:10.936+05:30  INFO 20844 --- [user-service] [http-nio-8081-exec-1] c.hex.user_service.service.AuthService   : before username extracted: satyam2
+2025-09-16T23:04:11.359+05:30  INFO 20844 --- [user-service] [http-nio-8081-exec-1] c.hex.user_service.service.AuthService   : user object extracted: User(id=3, username=satyam2, email=satyam2@gmail.com, password=$2a$10$fAxP.Y.rip3dK/BcPcLHauQTo0pY0Dv95Mn38uROfTis8.tF9fd7y, role=CUSTOMER)
+2025-09-16T23:04:11.360+05:30  INFO 20844 --- [user-service] [http-nio-8081-exec-1] c.hex.user_service.service.JwtService    : Claims before generating token: {roles=[ROLE_CUSTOMER]}
+2025-09-16T23:07:45.347+05:30  INFO 20844 --- [user-service] [http-nio-8081-exec-8] c.h.u.controller.UserController          : Id value in AuthController: 1
+2025-09-16T23:09:57.138+05:30  INFO 20844 --- [user-service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-16T23:09:57.185+05:30  INFO 20844 --- [user-service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-16T23:09:57.201+05:30  INFO 20844 --- [user-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-16T23:09:57.201+05:30  INFO 20844 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-16T23:09:57.201+05:30  INFO 20844 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-16T23:10:05.633+05:30  INFO 25304 --- [user-service] [restartedMain] c.h.user_service.UserServiceApplication  : Starting UserServiceApplication using Java 17.0.10 with PID 25304 (C:\Users\2000153919\Downloads\customersupportapp_microservice\user-service\target\classes started by 2000153919 in C:\Users\2000153919\Downloads\customersupportapp_microservice)
+2025-09-16T23:10:05.648+05:30  INFO 25304 --- [user-service] [restartedMain] c.h.user_service.UserServiceApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-09-16T23:10:05.691+05:30  INFO 25304 --- [user-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-09-16T23:10:05.691+05:30  INFO 25304 --- [user-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-09-16T23:10:06.664+05:30  INFO 25304 --- [user-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-16T23:10:06.742+05:30  INFO 25304 --- [user-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 1 JPA repository interface.
+2025-09-16T23:10:07.461+05:30  INFO 25304 --- [user-service] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-09-16T23:10:07.476+05:30  INFO 25304 --- [user-service] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-16T23:10:07.476+05:30  INFO 25304 --- [user-service] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-09-16T23:10:07.555+05:30  INFO 25304 --- [user-service] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-16T23:10:07.555+05:30  INFO 25304 --- [user-service] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1864 ms
+2025-09-16T23:10:07.714+05:30  INFO 25304 --- [user-service] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-16T23:10:07.777+05:30  INFO 25304 --- [user-service] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2025-09-16T23:10:07.824+05:30  INFO 25304 --- [user-service] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-16T23:10:08.136+05:30  INFO 25304 --- [user-service] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-16T23:10:08.183+05:30  INFO 25304 --- [user-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-16T23:10:08.386+05:30  INFO 25304 --- [user-service] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1e7493a7
+2025-09-16T23:10:08.402+05:30  INFO 25304 --- [user-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-16T23:10:08.433+05:30  WARN 25304 --- [user-service] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-16T23:10:08.449+05:30  INFO 25304 --- [user-service] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-16T23:10:09.298+05:30  INFO 25304 --- [user-service] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-16T23:10:09.345+05:30  INFO 25304 --- [user-service] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-16T23:10:09.782+05:30  INFO 25304 --- [user-service] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2025-09-16T23:10:09.938+05:30  WARN 25304 --- [user-service] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-16T23:10:10.595+05:30  WARN 25304 --- [user-service] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-09-16T23:10:10.642+05:30  INFO 25304 --- [user-service] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-09-16T23:10:10.658+05:30  INFO 25304 --- [user-service] [restartedMain] c.h.user_service.UserServiceApplication  : Started UserServiceApplication in 5.621 seconds (process running for 6.268)
+2025-09-16T23:10:21.201+05:30  INFO 25304 --- [user-service] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-16T23:10:21.202+05:30  INFO 25304 --- [user-service] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-16T23:10:21.203+05:30  INFO 25304 --- [user-service] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-16T23:10:21.886+05:30  INFO 25304 --- [user-service] [http-nio-8081-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 402 ms
+2025-09-16T23:10:52.982+05:30  INFO 25304 --- [user-service] [http-nio-8081-exec-10] c.hex.user_service.service.AuthService   : before username extracted: satyan
+2025-09-16T23:11:06.671+05:30  INFO 25304 --- [user-service] [http-nio-8081-exec-1] c.hex.user_service.service.AuthService   : before username extracted: satyam2
+2025-09-16T23:11:06.759+05:30  INFO 25304 --- [user-service] [http-nio-8081-exec-1] c.hex.user_service.service.AuthService   : user object extracted: User(id=3, username=satyam2, email=satyam2@gmail.com, password=$2a$10$fAxP.Y.rip3dK/BcPcLHauQTo0pY0Dv95Mn38uROfTis8.tF9fd7y, role=CUSTOMER)
+2025-09-16T23:11:06.760+05:30  INFO 25304 --- [user-service] [http-nio-8081-exec-1] c.hex.user_service.service.JwtService    : Claims before generating token: {roles=[ROLE_CUSTOMER]}
+2025-09-16T23:19:01.330+05:30  INFO 20220 --- [ticket-service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-16T23:19:01.346+05:30  INFO 25304 --- [user-service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-16T23:19:01.377+05:30  INFO 20220 --- [ticket-service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-16T23:19:01.394+05:30  INFO 20220 --- [ticket-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-16T23:19:01.394+05:30  INFO 20220 --- [ticket-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-16T23:19:01.410+05:30  INFO 20220 --- [ticket-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-16T23:19:01.432+05:30  INFO 25304 --- [user-service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-16T23:19:01.438+05:30  INFO 25304 --- [user-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-16T23:19:01.443+05:30  INFO 25304 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-16T23:19:01.450+05:30  INFO 25304 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
