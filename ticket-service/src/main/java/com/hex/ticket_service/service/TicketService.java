@@ -6,7 +6,9 @@ import com.hex.ticket_service.entity.TicketStatus;
 //import com.hex.ticket_service.entity.User;
 //import com.hex.ticket_service.repository.TicketHistoryRepository;
 import com.hex.ticket_service.exception.InvalidAssignmentException;
+import com.hex.ticket_service.exception.InvalidTicketDataException;
 import com.hex.ticket_service.exception.UnauthorizedActionException;
+import com.hex.ticket_service.exception.UserNotFoundException;
 import com.hex.ticket_service.repository.TicketRepository;
 //import com.hex.ticket_service.repository.UserRepository;
 import com.hex.ticket_service.service.client.UserClient;
@@ -40,9 +42,17 @@ public class TicketService {
         log.info("Creating Ticket with title:{}", request.title());
         log.debug("Full Ticket request Payload:{}", request);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if ("null".equalsIgnoreCase(request.title())||"null".equalsIgnoreCase(request.description())||"null".equalsIgnoreCase(request.priority().name()) ||request.title()==null || request.title().isBlank() || request.description()==null || request.description().isBlank() || request.priority()==null || request.priority().name().isBlank())
+        {
+            throw new InvalidTicketDataException("Ticket data can not be null.");
+        }
         log.info("Auth value: {}",auth);
         //User creator = userRepository.findByUsername(auth.getName()).orElseThrow();
         UserDto creator=userClient.getUserByUsername(auth.getName());
+        if(creator==null)
+        {
+            throw new UserNotFoundException("User not found: "+creator);
+        }
         log.info("Creatror: {}",creator);
         Ticket ticket = Ticket.builder().title(request.title())
                 .description(request.description())

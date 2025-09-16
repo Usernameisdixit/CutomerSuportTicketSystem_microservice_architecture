@@ -2,6 +2,8 @@ package com.hex.user_service.service;
 
 import com.hex.user_service.dto.AuthDtos;
 import com.hex.user_service.entity.User;
+import com.hex.user_service.exception.UserAlreadyExistsException;
+import com.hex.user_service.exception.UserNotFoundException;
 import com.hex.user_service.repository.UserRepository;
 import com.hex.user_service.service.JwtService;
 import lombok.AllArgsConstructor;
@@ -33,7 +35,7 @@ public class AuthService {
 
     public AuthDtos.AuthResponse register(AuthDtos.RegisterRequest req) {
         if (userRepository.findByUsername(req.username()).isPresent())
-            throw new RuntimeException("Username already exists");
+            throw new UserAlreadyExistsException("Username already exists");
         if (userRepository.findByEmail((req.email())).isPresent())
             throw new RuntimeException("Email already exists");
 
@@ -51,17 +53,22 @@ public class AuthService {
     }
 
     public AuthDtos.AuthResponse login(AuthDtos.LoginRequest req) {
+        log.info("before username extracted: {}",req.username());
+
+
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(req.username(), req.password())
         );
 
-        var user = userRepository.findByUsername(req.username()).orElseThrow();
+        var user = userRepository.findByUsername(req.username()).orElseThrow(()->new UserNotFoundException("User not found!"));
+        log.info("user object extracted: {}",user);
+
         Map<String,Object> cliams=new HashMap<>();
         cliams.put("roles", List.of("ROLE_"+user.getRole().name()));
 
         //String token = jwt.generateToken(user.getUsername(), Map.of("role", "ROLE_" + user.getRole()));
         String token = jwt.generateToken(user.getUsername(), cliams);
-        log.info("Token value: {}",token);
+        //log.info("Token value: {}",token);
         return new AuthDtos.AuthResponse(token, user.getUsername(), user.getRole().name());
 
     }

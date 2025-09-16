@@ -39,11 +39,18 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(buildError(ex,request,HttpStatus.NOT_FOUND));
     }
 
-//    @ExceptionHandler(AccessDeniedException.class)
-//    public ResponseEntity<ApiError> handleAccessDeniedException(AccessDeniedException ex, WebRequest request)
-//    {
-//        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(buildError(ex,request,HttpStatus.FORBIDDEN));
-//    }
+    @ExceptionHandler(InvalidTicketDataException.class)
+    public ResponseEntity<ApiError> handleInvalidTicketDataException(InvalidTicketDataException ex, WebRequest request)
+    {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(buildError(ex,request,HttpStatus.BAD_REQUEST));
+    }
+
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ApiError> handleUserNotFoundException(UserNotFoundException ex, WebRequest request)
+    {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(buildError(ex,request,HttpStatus.NOT_FOUND));
+    }
 
 
 
