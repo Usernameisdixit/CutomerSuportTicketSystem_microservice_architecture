@@ -78,9 +78,9 @@ public class TicketService {
 
         Ticket ticket = ticketRepository.findById(id).orElseThrow();
 
-        if (!isAdmin && auth.getAuthorities().stream().noneMatch(a -> a.getAuthority().equals("ROLE_AGENT"))) {
-            throw new RuntimeException("You are not allowed to update tickets.");
-        }
+//        if (!isAdmin && auth.getAuthorities().stream().noneMatch(a -> a.getAuthority().equals("ROLE_AGENT"))) {
+//            throw new UnauthorizedActionException("You are not allowed to update tickets.");
+//        }
 
 //in the req we are assigning the assignedTo value so we have kept !=null
         if (req.assignedTo() != null) {

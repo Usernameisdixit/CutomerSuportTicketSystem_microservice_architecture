@@ -47,11 +47,11 @@ public class GlobalExceptionHandler {
 
 
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiError> handleGeneric(Exception ex, WebRequest request)
-    {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(buildError(ex,request,HttpStatus.INTERNAL_SERVER_ERROR));
-    }
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<ApiError> handleGeneric(Exception ex, WebRequest request)
+//    {
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(buildError(ex,request,HttpStatus.INTERNAL_SERVER_ERROR));
+//    }
 
 
 }
