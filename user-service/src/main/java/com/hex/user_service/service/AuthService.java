@@ -47,8 +47,8 @@ public class AuthService {
                 .role(req.role())
                 .build();
         userRepository.save(user);
+        log.info("User registered successfully: {}",user.getUsername());
         String token = jwt.generateToken(user.getUsername(), Map.of("role", user.getRole()));
-
         return new AuthDtos.AuthResponse(token, user.getUsername(), user.getRole().name());
     }
 

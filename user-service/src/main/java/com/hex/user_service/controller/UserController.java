@@ -20,7 +20,7 @@ public class UserController {
 
 
     @GetMapping("/username/{username}")
-    @PreAuthorize("hasAnyRole('AGENT','ADMIN')")
+    @PreAuthorize("hasAnyRole('AGENT','ADMIN','CUSTOMER')")
     //@PreAuthorize("hasAnyRole('AGENT','ADMIN','username==authentication.name')")
     //@PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_AGENT') or #username==authentication.name")
     public UserDto getUserByUsername(@PathVariable String username, Authentication auth)
@@ -31,7 +31,7 @@ public class UserController {
 
 
     @GetMapping("{id}")
-    @PreAuthorize("hasAnyRole('AGENT','ADMIN')")
+    @PreAuthorize("hasAnyRole('AGENT','ADMIN','CUSTOMER')")
 
     //@PreAuthorize("hasAnyRole('AGENT','ADMIN',#id.toString()==authentication.principal")
     //@PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_AGENT') or #id.toString()==authentication.principal")

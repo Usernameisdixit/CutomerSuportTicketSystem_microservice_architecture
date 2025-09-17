@@ -34,19 +34,19 @@ public class AuthController {
         return ResponseEntity.ok(authService.login(req));
     }
 
-    @GetMapping("/me")
-    public ResponseEntity<AuthDtos.MeResponse> me() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        System.out.println("satyam");
-        System.out.println(auth.getName());
-
-
-        var user = userRepository.findByUsername(auth.getName()).orElseThrow();
-        System.out.println("satyam");
-        return ResponseEntity.ok(new AuthDtos.MeResponse(
-                user.getId(), user.getUsername(), user.getEmail(), user.getRole().name()));
-    }
+//    @GetMapping("/me")
+//    public ResponseEntity<AuthDtos.MeResponse> me() {
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//
+//        System.out.println("satyam");
+//        System.out.println(auth.getName());
+//
+//
+//        var user = userRepository.findByUsername(auth.getName()).orElseThrow();
+//        System.out.println("satyam");
+//        return ResponseEntity.ok(new AuthDtos.MeResponse(
+//                user.getId(), user.getUsername(), user.getEmail(), user.getRole().name()));
+//    }
 
 
 
