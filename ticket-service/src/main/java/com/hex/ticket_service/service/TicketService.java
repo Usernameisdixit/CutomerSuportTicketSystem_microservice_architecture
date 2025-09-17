@@ -5,6 +5,7 @@ import com.hex.ticket_service.entity.Ticket;
 import com.hex.ticket_service.entity.TicketStatus;
 //import com.hex.ticket_service.entity.User;
 //import com.hex.ticket_service.repository.TicketHistoryRepository;
+import com.hex.ticket_service.event.TicketEventPublisher;
 import com.hex.ticket_service.exception.InvalidAssignmentException;
 import com.hex.ticket_service.exception.InvalidTicketDataException;
 import com.hex.ticket_service.exception.UnauthorizedActionException;
@@ -36,6 +37,7 @@ public class TicketService {
     private final UserClient userClient;
     //private final UserRepository userRepository;
     private final TicketHistoryService ticketHistoryService;
+    private final TicketEventPublisher ticketEventPublisher;
 
 
     public TicketDtos.TicketResponse createTicket(TicketDtos.CreateTicketRequest request) {
@@ -64,6 +66,8 @@ public class TicketService {
                 .build();
         Ticket saved = ticketRepository.save(ticket);
         log.info("Saved value of Ticket: {}",saved);
+        //publish event
+        ticketEventPublisher.publishTicketCreated(mapToResponse(saved));
         return mapToResponse(saved);
 
     }

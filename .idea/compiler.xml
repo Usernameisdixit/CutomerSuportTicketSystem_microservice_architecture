@@ -13,6 +13,12 @@
         <module name="user-service" />
         <module name="ticket-service" />
       </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="notification-service" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="history-service" target="17" />
@@ -21,6 +27,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="history-service" options="-parameters" />
+      <module name="notification-service" options="-parameters" />
       <module name="ticket-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
