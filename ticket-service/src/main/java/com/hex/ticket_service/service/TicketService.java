@@ -67,7 +67,7 @@ public class TicketService {
         Ticket saved = ticketRepository.save(ticket);
         log.info("Saved value of Ticket: {}",saved);
         //publish event
-        ticketEventPublisher.publishTicketCreated(mapToResponse(saved));
+       // ticketEventPublisher.publishTicketCreated(mapToResponse(saved));
         return mapToResponse(saved);
 
     }
