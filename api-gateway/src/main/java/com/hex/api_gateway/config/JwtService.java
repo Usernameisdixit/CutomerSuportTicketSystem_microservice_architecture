@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import io.jsonwebtoken.security.Keys;
@@ -14,7 +15,7 @@ import java.util.Map;
 
 @Service
 public class JwtService {
-    private  final Key key;
+    private final Key key;
     private final long expirationMS;
 
     public JwtService(

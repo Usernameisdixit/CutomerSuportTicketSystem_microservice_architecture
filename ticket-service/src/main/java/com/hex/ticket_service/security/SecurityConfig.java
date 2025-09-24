@@ -37,15 +37,17 @@ public class SecurityConfig {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         //.requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/webjars/**",
+                                "/swagger-resources/**"
+                        ).permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(ex->ex.accessDeniedHandler
                         ((request, response, accessDeniedException)
                                 -> {
                             response.setStatus(HttpStatus.FORBIDDEN.value());
                             response.setContentType("application/json");
-
                             ApiError error=new ApiError("Access Denied",
                                     request.getRequestURI(),
                                     HttpStatus.FORBIDDEN.value(),

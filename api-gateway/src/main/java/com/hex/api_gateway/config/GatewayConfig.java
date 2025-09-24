@@ -11,14 +11,25 @@ public class GatewayConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder,JwtAuthFilter jwtAuthFilter)
     {
-        return builder.routes().route("user-service",r->
-                r.path("/api/auth/**","/api/users/**")
+        return builder.routes()
+                .route("user-service",r->
+                         r.path("/api/users/**","/api/auth/**")
                         .filters(f->f.filter(jwtAuthFilter))
                         .uri("http://localhost:8081"))
-                        .route("ticket-service",r->
-                                r.path("/api/tickets/**")
-                                        .filters(f->f.filter((jwtAuthFilter)))
-                                        .uri("http://localhost:8082"))
+                .route("ticket-service",r->
+                         r.path("/api/tickets/**")
+                                 .filters(f->f.filter((jwtAuthFilter)))
+                                 .uri("http://localhost:8082"))
+//                .route("swagger",r->
+//                        r.path("/v3/api-docs/**","/swagger-ui/**","/swagger-ui.html")
+//                                .uri("http://localhost:8083"))
+                .route("user-swagger",r->
+                        r.path("/api/users/v3/api-docs","/api/users/swagger-ui/**","/api/users/swagger-ui.html")
+                        .uri("http://localhost:8081"))
+                .route("ticket-swagger",r->
+                        r.path("/api/tickets/v3/api-docs","api/tickets/swagger-ui/**","api/tickets/swagger-ui.html")
+                                .uri("http://localhost:8082"))
+
                 .build();
     }
 }
