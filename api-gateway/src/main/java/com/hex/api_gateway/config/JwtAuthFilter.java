@@ -1,6 +1,7 @@
 package com.hex.api_gateway.config;
 
 import lombok.AllArgsConstructor;
+import org.slf4j.ILoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -30,12 +31,16 @@ public class JwtAuthFilter implements GatewayFilter {
 //        this.uds = uds;
 //    }
 
+
+
+
     @Override
     public reactor.core.publisher.Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
        String path=exchange.getRequest().getURI().getPath();
-       if(path.startsWith("/v3/api-docs") || path.startsWith("/swagger-ui") ) {
-           return chain.filter(exchange);
-       }
+        System.out.println("path in jwtAuthFilter in api-gateway"+path);
+//       if(path.startsWith("/v3/api-docs") || path.startsWith("/swagger-ui") ) {
+//           return chain.filter(exchange);
+//       }
         final String header = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
         System.out.print("Header in jwtAuthFilter " + header);
         if (header == null || !header.startsWith("Bearer")) {

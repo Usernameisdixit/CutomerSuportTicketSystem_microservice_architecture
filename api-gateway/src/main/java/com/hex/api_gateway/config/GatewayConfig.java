@@ -24,10 +24,10 @@ public class GatewayConfig {
 //                        r.path("/v3/api-docs/**","/swagger-ui/**","/swagger-ui.html")
 //                                .uri("http://localhost:8083"))
                 .route("user-swagger",r->
-                        r.path("/api/users/v3/api-docs","/api/users/swagger-ui/**","/api/users/swagger-ui.html")
+                        r.path("/user/v3/api-docs","/user/swagger-ui/**","/user/swagger-ui.html")
                         .uri("http://localhost:8081"))
                 .route("ticket-swagger",r->
-                        r.path("/api/tickets/v3/api-docs","api/tickets/swagger-ui/**","api/tickets/swagger-ui.html")
+                        r.path("/ticket/v3/api-docs","/ticket/swagger-ui/**","/ticket/swagger-ui.html")
                                 .uri("http://localhost:8082"))
 
                 .build();

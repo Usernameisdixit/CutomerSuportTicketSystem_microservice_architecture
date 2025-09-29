@@ -13,14 +13,10 @@
         <module name="ticket-service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="history-service" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
-      <module name="history-service" options="-parameters" />
       <module name="notification-service" options="-parameters" />
       <module name="ticket-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
