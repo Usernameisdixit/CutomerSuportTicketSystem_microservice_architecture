@@ -4,8 +4,14 @@ import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.*;
+import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import java.util.List;
 
@@ -16,6 +22,7 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI caseOpenAPI() {
         return new OpenAPI()
+                //.servers(List.of(new Server().url("http://localhost:8083/user-service")))
                 .addSecurityItem(new SecurityRequirement()
                         .addList("bearerAuth")).components(new Components()
                         .addSecuritySchemes(
@@ -33,4 +40,8 @@ public class SwaggerConfig {
                         .version("v1")
                 );
     }
+
+
+
+
 }

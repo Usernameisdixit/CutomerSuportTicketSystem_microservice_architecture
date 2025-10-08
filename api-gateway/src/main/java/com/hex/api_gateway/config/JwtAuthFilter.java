@@ -38,9 +38,10 @@ public class JwtAuthFilter implements GatewayFilter {
     public reactor.core.publisher.Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
        String path=exchange.getRequest().getURI().getPath();
         System.out.println("path in jwtAuthFilter in api-gateway"+path);
-//       if(path.startsWith("/v3/api-docs") || path.startsWith("/swagger-ui") ) {
-//           return chain.filter(exchange);
-//       }
+        if (path.startsWith("/v3/api-docs") || path.startsWith("/swagger-ui") || path.startsWith("/webjars") || path.startsWith("/swagger-resources")) {
+            System.out.println("Skipping JWT filter for path: " + path);
+            return chain.filter(exchange);
+        }
         final String header = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
         System.out.print("Header in jwtAuthFilter " + header);
         if (header == null || !header.startsWith("Bearer")) {

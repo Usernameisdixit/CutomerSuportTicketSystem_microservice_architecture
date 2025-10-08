@@ -33,18 +33,24 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        String path = request.getServletPath();
-        return path.startsWith("/v3/api-docs")
-                || path.startsWith("/swagger-ui")
-                || path.equals("/swagger-ui.html")
-                || path.startsWith("/swagger-resources")
-                || path.startsWith("/webjars")
-                || path.startsWith("/api/auth");
+        String path = request.getRequestURI();
+        logger.info("Checking shouldNotFilter for path: " + path);
+        boolean skip = path.startsWith("/v3/api-docs")
+                || path.startsWith("/v3/api-docs/user-service")
+                || path.contains("swagger-ui")
+                || path.contains("swagger-resources")
+                || path.contains("webjars");
+        logger.info("shouldNotFilter result: " + skip);
+        return skip;
     }
+
+
 
 
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws ServletException, IOException {
+        logger.info("Path value inside doFilterInternal:");
+        logger.info(req.getServletPath());
         final String header = req.getHeader("Authorization");
         logger.info("Header in JwtAuthFilter in user-service" + header);
         if (header == null || !header.startsWith("Bearer")) {

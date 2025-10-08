@@ -35,6 +35,21 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 //        this.uds = uds;
 //    }
 
+//    @Override
+//    protected boolean shouldNotFilter(HttpServletRequest request) {
+//        String path = request.getServletPath();
+//        logger.info("Path value inside shouldNotFilter: {}");
+//        logger.info(path);
+//
+//        return path.contains("/v3/api-docs")
+//                || path.contains("/swagger-ui")
+//                || path.equals("/swagger-ui.html")
+//                || path.contains("/swagger-resources")
+//                || path.contains("/webjars")
+//                || path.startsWith("/api/tickets");
+//    }
+
+
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws ServletException, IOException {
         final String header = req.getHeader("Authorization");

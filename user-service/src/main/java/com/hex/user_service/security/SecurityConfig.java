@@ -7,6 +7,7 @@ import com.hex.user_service.dto.ApiError;
 import com.hex.user_service.security.JwtAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -33,12 +34,33 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
+        http.cors(cors -> cors.configurationSource(request -> {
+                    var corsConfig = new org.springframework.web.cors.CorsConfiguration();
+                    corsConfig.setAllowCredentials(true);
+                    corsConfig.addAllowedOrigin("http://localhost:8083");
+                    corsConfig.addAllowedHeader("*");
+                    corsConfig.addAllowedMethod("*");
+                    return corsConfig;
+                }))
+
+
+
+                .csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
                         .requestMatchers("/api/auth/**").permitAll()
                        // .requestMatchers("/api/users/**").authenticated()
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/v3/api-docs/user-service/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/swagger-resources/**",
+                                "/webjars/**"
+                        ).permitAll()
+
                         .anyRequest().authenticated())
 // invalid access handle
                 .exceptionHandling(ex->ex.accessDeniedHandler
@@ -74,7 +96,9 @@ public class SecurityConfig {
                             mapper.registerModule(new JavaTimeModule());
                             mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
                             response.getWriter().write(mapper.writeValueAsString(error));
-                        }))
+                        }
+                        )
+                        )
                 )
 
 
