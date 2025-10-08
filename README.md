@@ -7,4 +7,9 @@ http://localhost:8082/swagger-ui/index.html( ticket-service)
 SCENARIOS-
 customer can create ticket,view his own tickets,view history of tickets.
 admin can update tickets and view all tickets and assign to himself and agents but can not assign to customers,can view by id and username.
-agents can assign tickets to themselves, can view all tickets,can view by id and username.
+agents can assign tickets to themselves, can view all tickets,can view by id and username, can not udpate priority only can change status.
+
+
+API GATEWAY SCENARIO:
+HIT --> http://localhost:8083/swagger-ui.html will open swagger ui with user service and ticket service in dropdown.
+
