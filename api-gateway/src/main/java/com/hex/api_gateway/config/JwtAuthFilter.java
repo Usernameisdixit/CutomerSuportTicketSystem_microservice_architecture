@@ -1,6 +1,7 @@
 package com.hex.api_gateway.config;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.ILoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -15,11 +16,13 @@ import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 
 @Component
 @AllArgsConstructor
+@Slf4j
 public class JwtAuthFilter implements GatewayFilter {
 
     private final JwtService jwtService;
@@ -39,7 +42,10 @@ public class JwtAuthFilter implements GatewayFilter {
        String path=exchange.getRequest().getURI().getPath();
         System.out.println("path in jwtAuthFilter in api-gateway"+path);
         if (path.startsWith("/v3/api-docs") || path.startsWith("/swagger-ui") || path.startsWith("/webjars") || path.startsWith("/swagger-resources")) {
-            System.out.println("Skipping JWT filter for path: " + path);
+            log.info("Skipping JWT filter for path: " + path);
+            exchange.getRequest().getHeaders().forEach((key, value) ->
+                    log.debug("Header [{}] = {}", key, value)
+            );
             return chain.filter(exchange);
         }
         final String header = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
@@ -61,12 +67,15 @@ public class JwtAuthFilter implements GatewayFilter {
 //        } catch (Exception e) {
 //            System.out.println("Invalid Token" + e.getMessage());
 //        }
-            ServletServerHttpRequest mutated= (ServletServerHttpRequest) exchange.getRequest()
+            ServerHttpRequest mutated= (ServerHttpRequest) exchange.getRequest()
                     .mutate().header("X-User-Name",username)
                     .header("X-User-Roles",String.join(",",roles))
+                    .header(HttpHeaders.AUTHORIZATION, header)
                     .build();
+            log.info("Added headers to downstream request: X-User-Name={}, X-User-Roles={}",
+                    username, String.join(",", roles));
 
-            return chain.filter(exchange.mutate().request((ServerHttpRequest) mutated).build());
+            return chain.filter(exchange.mutate().request(mutated).build());
 
 //            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 //                //UserDetails userDetails = uds.loadUserByUsername(username);
