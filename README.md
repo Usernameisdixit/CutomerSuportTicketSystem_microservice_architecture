@@ -39,7 +39,8 @@ http://localhost:8083/api/auth/login
 
 
 
-Noitification Service(RabbitMQ)
+Noitification Service(RabbitMQ-pulled image in docker desktop)
+commnad-docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 -v rabbitmq_data:/var/lib/rabbitmq rabbitmq:3.13-management
 response will be available on notification service-
 scenarios-Ticket creation and updation.
 ex-Notification Sent: Ticket Updated with ID: 7 Status: CLOSED
