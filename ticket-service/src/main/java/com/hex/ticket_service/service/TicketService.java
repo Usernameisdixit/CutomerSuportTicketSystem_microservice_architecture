@@ -67,7 +67,7 @@ public class TicketService {
         Ticket saved = ticketRepository.save(ticket);
         log.info("Saved value of Ticket: {}",saved);
         //publish event
-       // ticketEventPublisher.publishTicketCreated(mapToResponse(saved));
+        ticketEventPublisher.publishTicketCreated(mapToResponse(saved));
         return mapToResponse(saved);
 
     }
@@ -134,6 +134,10 @@ public class TicketService {
             ticketHistoryService.logHistory(ticket, "STATUS_CHANGED", oldStatus, newStaus, req.comment(), currentUser);
 
         }
+        Ticket saved = ticketRepository.save(ticket);
+        log.info("Saved value of Ticket: {}",saved);
+        //publish event
+        ticketEventPublisher.publishTicketUpdated(mapToResponse(saved));
         return mapToResponse(ticketRepository.save(ticket));
     }
 

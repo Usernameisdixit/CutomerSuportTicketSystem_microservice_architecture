@@ -15,12 +15,12 @@ public class TicketEventPublisher {
 
     public void publishTicketCreated(TicketDtos.TicketResponse ticket)
     {
-        rabbitTemplate.convertAndSend(EXCHANGE,ROUTING_KEY,"New Ticket Created: "+ticket.id()+" by "+ticket.createdBy());
+        rabbitTemplate.convertAndSend(EXCHANGE,ROUTING_KEY,"New Ticket Created with ID: "+ticket.id()+" by "+ticket.createdBy());
     }
 
     public  void publishTicketUpdated(TicketDtos.TicketResponse ticket)
     {
-        rabbitTemplate.convertAndSend(EXCHANGE,ROUTING_KEY,"Ticket Updated: "+ticket.id()+" Status: "+ticket.status());
+        rabbitTemplate.convertAndSend(EXCHANGE,ROUTING_KEY,"Ticket Updated with ID: "+ticket.id()+" Status: "+ticket.status());
     }
 
 }

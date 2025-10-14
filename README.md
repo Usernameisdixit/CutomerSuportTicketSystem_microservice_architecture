@@ -39,8 +39,9 @@ http://localhost:8083/api/auth/login
 
 
 
-hi
-
-hello
+Noitification Service(RabbitMQ)
+response will be available on notification service-
+scenarios-Ticket creation and updation.
+ex-Notification Sent: Ticket Updated with ID: 7 Status: CLOSED
 
 
